@@ -2,17 +2,11 @@ using UnityEngine;
 
 public class PlayerAnimController : MonoBehaviour
 {
-    public Animator animator;
-    public LayerMask groundLayer;
+    [SerializeField] private Animator animator;
 
-    public float IdleTimer = 10;
-    public float raycastDistance = 1.0f;
+    [SerializeField] private float IdleTimer = 10;
+    [SerializeField] private float raycastDistance = 1.0f;
     public bool isRunning = false;
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
 
     private void Update()
     {
@@ -70,7 +64,7 @@ public class PlayerAnimController : MonoBehaviour
 
     bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance);
         return hit.collider != null;
     }
 }
