@@ -7,7 +7,6 @@ public class IciclesController : MonoBehaviour
     public float waitingTime = 1f;
     public float downtime = 0.5f;
     public float raycastDistance;
-    public GameObject player;
     private bool _isFalling = false;
     private bool _hasStartedFallingCoroutine = false;
     private bool _hasStartedWaitAndDestroyCoroutine = false;

@@ -9,14 +9,24 @@ public class CannonController : MonoBehaviour
     public Transform bullerSpawnPoint;
     public Sprite activatedCannon;
     public Sprite deactivatedCannon;
+    
 
     private SpriteRenderer _sr;
     private bool _isReloading = false;
+
+    [SerializeField] private float startShotDelay = 1.5f;
+    [SerializeField] private bool startWithDelay;
 
     private void Start()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
         SetCannonSprite(deactivatedCannon);
+
+        if (startWithDelay)
+        {
+            _isReloading = true;
+            StartCoroutine(StartShotDelay());
+        }
     }
 
     private void Update()
@@ -50,6 +60,12 @@ public class CannonController : MonoBehaviour
     private IEnumerator ShotDelay()
     {        
         yield return new WaitForSeconds(shotDelay);
+        _isReloading = false;
+    }
+
+    private IEnumerator StartShotDelay()
+    {
+        yield return new WaitForSeconds(startShotDelay);
         _isReloading = false;
     }
 }

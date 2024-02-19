@@ -9,16 +9,9 @@ public class Player_Movement : MonoBehaviour
     private float _horizontalInput;
     private float jumpTimer = 0;
 
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private SpriteRenderer _sr;
 
-    private Rigidbody2D _rb;
-    private SpriteRenderer _sr;
-
-
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        _sr = GetComponentInChildren<SpriteRenderer>();
-    }
 
     private void Update()
     {
