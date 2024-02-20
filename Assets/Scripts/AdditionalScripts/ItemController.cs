@@ -2,13 +2,25 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    public GameObject doorsParent;
+    [SerializeField] private GameObject doorsParent;
+    [SerializeField] private bool isTwoKeyMode = false;
+    [SerializeField] private bool IsFirstKey;
+    [SerializeField] private bool IsSecondKey;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    static private bool _isFirstKeyCollected;
+    static private bool _isSecondKeyCollected;
+
+    private void Start()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        _isFirstKeyCollected = false;
+        _isSecondKeyCollected = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
         {
-            string collidedTag = collision.otherCollider.tag;
+            string collidedTag = gameObject.tag;
 
             if (collidedTag == "Cake")
             {
@@ -16,9 +28,27 @@ public class ItemController : MonoBehaviour
             }                          
             else if (collidedTag == "Key")
             {
-                OpenDoors();
-            }                         
+                if (isTwoKeyMode)
+                {
+                    if (IsFirstKey)
+                    {
+                        _isFirstKeyCollected = true;
+                    }
+                    else if (IsSecondKey)
+                    {
+                        _isSecondKeyCollected = true;
+                    }
 
+                    if (_isFirstKeyCollected && _isSecondKeyCollected)
+                    {
+                        OpenDoors();
+                    }
+                }
+                else
+                {
+                    OpenDoors();
+                }                
+            }       
             gameObject.SetActive(false);
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerDeathController : MonoBehaviour
 {
     private int _countOfDeath = 0;
-    public LevelCanvasLogic levelCanvasLogic;
+    [SerializeField] private LevelCanvasLogic levelCanvasLogic;
 
     void Update()
     {

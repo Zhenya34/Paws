@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public Player_Movement playerMovement;
-    public PlayerAnimController playerAnimController;
+    [SerializeField] private Player_Movement playerMovement;
+    [SerializeField] private PlayerAnimController playerAnimController;
 
     public void OnJumpButtonClicked()
     {

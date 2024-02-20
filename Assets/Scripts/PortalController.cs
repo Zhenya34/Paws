@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PortalController : MonoBehaviour
 {
-    public string levelToLoad;
+    [SerializeField] private string levelToLoad;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

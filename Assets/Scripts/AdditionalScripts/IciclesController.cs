@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class IciclesController : MonoBehaviour
 {
+    [SerializeField] private float waitingTime = 1f;
+    [SerializeField] private float downtime = 0.5f;
+    [SerializeField] private float raycastDistance;
     private Rigidbody2D _rb;
-    public float waitingTime = 1f;
-    public float downtime = 0.5f;
-    public float raycastDistance;
     private bool _isFalling = false;
     private bool _hasStartedFallingCoroutine = false;
     private bool _hasStartedWaitAndDestroyCoroutine = false;
 
-    private void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }

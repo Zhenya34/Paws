@@ -3,24 +3,31 @@ using UnityEngine;
 public class PlayerAnimController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
     [SerializeField] private float IdleTimer = 10;
     [SerializeField] private float raycastDistance = 1.0f;
     public bool isRunning = false;
 
+    private enum AnimationState
+    {
+        IdleWait,
+        IsRunning,
+        Idle,
+        Jump,
+    }
+
     private void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("IdleWait"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(AnimationState.IdleWait.ToString()))
         {
             IdleTimer -= Time.deltaTime;
 
             if (IdleTimer <= 0)
             {
-                animator.SetBool("Idle", true);
+                animator.SetBool(AnimationState.Idle.ToString(), true);
             }
             else
             {
-                animator.SetBool("Idle", false);
+                animator.SetBool(AnimationState.Idle.ToString(), false);
             }                
         }
 
@@ -46,7 +53,7 @@ public class PlayerAnimController : MonoBehaviour
     {
         if (IsGrounded())
         {
-            animator.SetTrigger("Jump");
+            animator.SetTrigger(AnimationState.Jump.ToString());
             IdleTimer = 10;
         }
     }
@@ -54,12 +61,12 @@ public class PlayerAnimController : MonoBehaviour
     public void IsRunningTrue()
     {
         IdleTimer = 10;
-        animator.SetBool("IsRunning", true);
+        animator.SetBool(AnimationState.IsRunning.ToString(), true);
     }
 
     public void IsRunningFalse()
     {
-        animator.SetBool("IsRunning", false);
+        animator.SetBool(AnimationState.IsRunning.ToString(), false);
     }
 
     bool IsGrounded()

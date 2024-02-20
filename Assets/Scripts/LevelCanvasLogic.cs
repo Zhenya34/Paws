@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelCanvasLogic : MonoBehaviour
 {
-    public GameObject pauseUI;
-    public GameObject pauseButton;
-    public GameObject soundButton;
+    [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject pauseButton;
+    [SerializeField] private GameObject soundButton;
 
     public void HidePausePanel()
     {

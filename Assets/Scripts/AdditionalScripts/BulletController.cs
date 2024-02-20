@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public float bulletSpeed = 4f;
-    public float lifetime = 8f;
-    public PlayerDeathController playerDeathController;
+    [SerializeField] private float bulletSpeed = 4f;
+    [SerializeField] private float lifetime = 8f;
+    [SerializeField] private PlayerDeathController playerDeathController;
 
     private void Start()
     {

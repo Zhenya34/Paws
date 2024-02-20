@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    public Vector3 startPoint;
-    public Vector3 endPoint;
-    public float speed = 2.0f;
+    [SerializeField] private Vector3 startPoint;
+    [SerializeField] private Vector3 endPoint;
+    [SerializeField] private float speed = 2.0f;
 
     private Vector3 _target;
 

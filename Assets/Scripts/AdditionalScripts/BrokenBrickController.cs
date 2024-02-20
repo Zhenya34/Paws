@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class BrokenBrickController : MonoBehaviour
 {
-    public float destryDelay = 3;
-    public Sprite destroyBrickSprite;
+    [SerializeField] private float destryDelay = 3;
+    [SerializeField] private Sprite destroyBrickSprite;
     private SpriteRenderer _sr;
 
-    private void Start()
+    private void Awake()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
     }

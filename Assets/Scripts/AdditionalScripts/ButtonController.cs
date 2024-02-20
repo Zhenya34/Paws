@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
-    public Sprite pressedSprite;
-    public Sprite unpressedSprite;
-    public float raiseHeight;
-    public Vector3 initialPosition;
-    public GameObject wallDoorParent;
+    [SerializeField] private Sprite pressedSprite;
+    [SerializeField] private Sprite unpressedSprite;
+    [SerializeField] private float raiseHeight;
+    [SerializeField] private Vector3 initialPosition;
+    [SerializeField] private GameObject wallDoorParent;
 
-    public bool IsFirtsButton;
-    public bool IsSecondButton;
+    [SerializeField] private bool IsFirtsButton;
+    [SerializeField] private bool IsSecondButton;
 
-    public bool IsTwoButtonMode = false;
+    [SerializeField] private bool IsTwoButtonMode = false;
 
     private SpriteRenderer _sr;
     static private bool _isFirstButtonPressed = false;
     static private bool _isSecondButtonPressed = false;
 
-    private void Start()
+    private void Awake()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
         _isFirstButtonPressed = false;

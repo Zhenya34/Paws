@@ -3,21 +3,19 @@ using System.Collections;
 
 public class CannonController : MonoBehaviour
 {
-    public float shotDelay = 3f;
-    public float recoilDelay = 0.6f;
-    public GameObject bulletPrefab;
-    public Transform bullerSpawnPoint;
-    public Sprite activatedCannon;
-    public Sprite deactivatedCannon;
-    
+    [SerializeField] private float shotDelay = 3f;
+    [SerializeField] private float recoilDelay = 0.6f;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform bullerSpawnPoint;
+    [SerializeField] private Sprite activatedCannon;
+    [SerializeField] private Sprite deactivatedCannon;
+    [SerializeField] private float startShotDelay = 1.5f;
+    [SerializeField] private bool startWithDelay;
 
     private SpriteRenderer _sr;
     private bool _isReloading = false;
 
-    [SerializeField] private float startShotDelay = 1.5f;
-    [SerializeField] private bool startWithDelay;
-
-    private void Start()
+    private void Awake()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
         SetCannonSprite(deactivatedCannon);

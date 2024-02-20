@@ -4,10 +4,10 @@ public class WoodPlatformController : MonoBehaviour
 {
     private BoxCollider2D _platformCollider;
     private Collider2D _playerCollider;
-    public Rigidbody2D rb;
-    public LayerMask playerLayer;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private LayerMask playerLayer;
 
-    private void Start()
+    private void Awake()
     {
         _platformCollider = GetComponent<BoxCollider2D>();
         _playerCollider = rb.GetComponent<Collider2D>();

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ActivationController : MonoBehaviour
 {
-    public GameObject checkingObj;
+    [SerializeField] private GameObject checkingObj;
     private MoveController moveController;
 
-    private void Start()
+    private void Awake()
     {
         moveController = GetComponent<MoveController>();
     }

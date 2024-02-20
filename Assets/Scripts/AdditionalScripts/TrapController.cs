@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TrapController : MonoBehaviour
 {
-    public PlayerDeathController playerDeathController;
+    [SerializeField] private PlayerDeathController playerDeathController;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

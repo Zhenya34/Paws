@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class TrampolineController : MonoBehaviour
 {
-    public float jumpForce;
-    public Rigidbody2D playerRb;    
-    public Sprite activatedTrampoline;
-    public Sprite deactivatedTrampoline;
-    public Vector3 initialPosition;
-    public float raiseHeight = 0.1f;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private Rigidbody2D playerRb;
+    [SerializeField] private Sprite activatedTrampoline;
+    [SerializeField] private Sprite deactivatedTrampoline;
+    [SerializeField] private Vector3 initialPosition;
+    [SerializeField] private float raiseHeight = 0.1f;
 
     private SpriteRenderer _sr;    
 
-    private void Start()
+    private void Awake()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
         SetTrampolineSprite(deactivatedTrampoline);

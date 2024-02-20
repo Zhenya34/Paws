@@ -5,18 +5,18 @@ public class MainMenuCanvasLogic : MonoBehaviour
 {
     private readonly string _telegramUsername = "Zhenyazhnr_dev";
 
-    public GameObject MainMenuUI;
-    public GameObject LevelPanelUI;
-    public GameObject statsButton;
-    public GameObject settingsButton;
-    public GameObject settingsPanel;
-    public GameObject statsPanel;
-    public GameObject controlsButtonOn;
-    public GameObject controlsButtonOFF;
-    public GameObject musicButtonON;
-    public GameObject musicButtonOFF;
-    public GameObject soundButtonON;
-    public GameObject soundButtonOFF;
+    [SerializeField] private GameObject MainMenuUI;
+    [SerializeField] private GameObject LevelPanelUI;
+    [SerializeField] private GameObject statsButton;
+    [SerializeField] private GameObject settingsButton;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject statsPanel;
+    [SerializeField] private GameObject controlsButtonOn;
+    [SerializeField] private GameObject controlsButtonOFF;
+    [SerializeField] private GameObject musicButtonON;
+    [SerializeField] private GameObject musicButtonOFF;
+    [SerializeField] private GameObject soundButtonON;
+    [SerializeField] private GameObject soundButtonOFF;
 
     static public int countOfCake;
 

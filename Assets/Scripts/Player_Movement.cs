@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    public float speed = 8;
-    public float jumpForce = 5;
-    public float jumpDelay = 0.2f;
-    public float uiHorizontalInput;
-    private float _horizontalInput;
-    private float jumpTimer = 0;
-
+    [SerializeField] private float speed = 8;
+    [SerializeField] private float jumpForce = 5;
+    [SerializeField] private float jumpDelay = 0.2f;
+    [SerializeField] private float uiHorizontalInput;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private SpriteRenderer _sr;
 
+    private float _horizontalInput;
+    private float jumpTimer = 0;
 
     private void Update()
     {
