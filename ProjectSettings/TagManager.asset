@@ -18,7 +18,7 @@ TagManager:
   - UI
   - Ground
   - Camera
-  - 
+  - collider
   - 
   - 
   - 
@@ -46,15 +46,18 @@ TagManager:
   - name: UI
     uniqueID: 3000279789
     locked: 0
-  - name: Player
-    uniqueID: 1492609865
-    locked: 0
   - name: Ground
     uniqueID: 607441669
+    locked: 0
+  - name: Player
+    uniqueID: 1492609865
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Camera
     uniqueID: 3626466839
+    locked: 0
+  - name: collider
+    uniqueID: 3699821959
     locked: 0

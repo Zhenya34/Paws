@@ -38,13 +38,13 @@ public class ButtonController : MonoBehaviour
                 {
                     _isSecondButtonPressed = true;
                 }
-                SetButtonSprite(pressedSprite);
+                SetButtonSprite(pressedSprite);           
             }
             else
             {
                 _isFirstButtonPressed = true;
-                SetButtonSprite(pressedSprite);
                 wallDoorParent.SetActive(false);
+                SetButtonSprite(pressedSprite);
             }
         }
 
