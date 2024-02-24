@@ -3041,8 +3041,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1542200192}
     - target: {fileID: 5235690852444603090, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
+      propertyPath: IsFirstButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235690852444603090, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
       propertyPath: IsFirtsButton
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235690852444603090, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
+      propertyPath: IsSecondButton
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235690852444603090, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
       propertyPath: twoButtonsMode
@@ -4972,7 +4980,6 @@ Transform:
   - {fileID: 2067358837}
   - {fileID: 1320995439}
   - {fileID: 1204321888}
-  - {fileID: 1542200195}
   - {fileID: 663029689}
   - {fileID: 127095142}
   - {fileID: 887305001}
@@ -4995,6 +5002,7 @@ Transform:
   - {fileID: 640750419}
   - {fileID: 1798966460}
   - {fileID: 64748344}
+  - {fileID: 1542200195}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1608196456
@@ -20609,7 +20617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5235690852444603090, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
       propertyPath: initialPosition.y
-      value: 41.819
+      value: 41.786
       objectReference: {fileID: 0}
     - target: {fileID: 5235690852444603092, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
       propertyPath: m_RootOrder
@@ -20621,7 +20629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5235690852444603092, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46.871014
+      value: 46.838013
       objectReference: {fileID: 0}
     - target: {fileID: 5235690852444603092, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
       propertyPath: m_LocalPosition.z

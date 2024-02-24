@@ -8,20 +8,18 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private Vector3 initialPosition;
     [SerializeField] private GameObject wallDoorParent;
 
-    [SerializeField] private bool IsFirtsButton;
+    [SerializeField] private bool IsFirstButton;
     [SerializeField] private bool IsSecondButton;
 
     [SerializeField] private bool IsTwoButtonMode = false;
 
     private SpriteRenderer _sr;
-    static private bool _isFirstButtonPressed = false;
-    static private bool _isSecondButtonPressed = false;
+    static private int countTriggerOnFirstButton = 0;
+    static private int countTriggerOnSecondButton = 0;
 
     private void Awake()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
-        _isFirstButtonPressed = false;
-        _isSecondButtonPressed = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,25 +28,35 @@ public class ButtonController : MonoBehaviour
         {
             if (IsTwoButtonMode)
             {
-                if (IsFirtsButton)
+                if (IsFirstButton)
                 {
-                    _isFirstButtonPressed = true;
+                    if(countTriggerOnFirstButton == 0)
+                    {
+                        SetButtonSprite(pressedSprite);
+                    }
+                    countTriggerOnFirstButton++;
                 }
                 else if (IsSecondButton)
                 {
-                    _isSecondButtonPressed = true;
-                }
-                SetButtonSprite(pressedSprite);           
+                    if(countTriggerOnSecondButton == 0)
+                    {
+                        SetButtonSprite(pressedSprite);
+                    }
+                    countTriggerOnSecondButton++;
+                }    
             }
             else
             {
-                _isFirstButtonPressed = true;
-                wallDoorParent.SetActive(false);
-                SetButtonSprite(pressedSprite);
+                if (countTriggerOnFirstButton == 0)
+                {
+                    wallDoorParent.SetActive(false);
+                    SetButtonSprite(pressedSprite);
+                }
+                countTriggerOnFirstButton++;
             }
         }
 
-        if(_isFirstButtonPressed && _isSecondButtonPressed)
+        if (countTriggerOnFirstButton > 0 && countTriggerOnSecondButton > 0)
         {
             wallDoorParent.SetActive(false);
         }
@@ -60,20 +68,39 @@ public class ButtonController : MonoBehaviour
         {
             if (IsTwoButtonMode)
             {
-                if (IsFirtsButton)
+                if (IsFirstButton)
                 {
-                    _isFirstButtonPressed = false;
+                    if (countTriggerOnFirstButton > 0)
+                    {
+                        countTriggerOnFirstButton--;
+                        if (countTriggerOnFirstButton == 0)
+                        {
+                            SetButtonSprite(unpressedSprite);
+                        }
+                    }
                 }
                 else if (IsSecondButton)
                 {
-                    _isSecondButtonPressed = false;
+                    if (countTriggerOnSecondButton > 0)
+                    {
+                        countTriggerOnSecondButton--;
+                        if (countTriggerOnSecondButton == 0)
+                        {
+                            SetButtonSprite(unpressedSprite);
+                        }
+                    }
                 }
-                SetButtonSprite(unpressedSprite);
             }
             else
             {
-                _isFirstButtonPressed = false;
-                SetButtonSprite(unpressedSprite);
+                if (countTriggerOnFirstButton > 0)
+                {
+                    countTriggerOnFirstButton--;
+                    if (countTriggerOnFirstButton == 0)
+                    {
+                        SetButtonSprite(unpressedSprite);
+                    }
+                }
             }
         }
     }
