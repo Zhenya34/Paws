@@ -69,7 +69,7 @@ public class PlayerAnimController : MonoBehaviour
         animator.SetBool(AnimationState.IsRunning.ToString(), false);
     }
 
-    bool IsGrounded()
+    private bool IsGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance);
         return hit.collider != null;

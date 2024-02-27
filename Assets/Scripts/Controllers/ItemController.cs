@@ -6,6 +6,9 @@ public class ItemController : MonoBehaviour
     [SerializeField] private bool isTwoKeyMode = false;
     [SerializeField] private bool IsFirstKey;
     [SerializeField] private bool IsSecondKey;
+    [SerializeField] private AudioSource _as;
+    [SerializeField] private AudioClip cakeCollectClip;
+    [SerializeField] private AudioClip keyCollectClip;
 
     static private bool _isFirstKeyCollected;
     static private bool _isSecondKeyCollected;
@@ -25,9 +28,11 @@ public class ItemController : MonoBehaviour
             if (collidedTag == "Cake")
             {
                 MainMenuCanvasLogic.countOfCake += 1;
+                PlaySound(cakeCollectClip);
             }                          
             else if (collidedTag == "Key")
             {
+                PlaySound(keyCollectClip);
                 if (isTwoKeyMode)
                 {
                     if (IsFirstKey)
@@ -47,10 +52,20 @@ public class ItemController : MonoBehaviour
                 else
                 {
                     OpenDoors();
-                }                
+                }
             }       
             gameObject.SetActive(false);
         }
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        GameObject soundObject = new("TempSoundObject");
+        AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = 0.35f;
+        audioSource.Play();
+        Destroy(soundObject, clip.length);
     }
 
     private void OpenDoors()

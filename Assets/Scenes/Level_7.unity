@@ -361,6 +361,10 @@ PrefabInstance:
       value: Tile_Button
       objectReference: {fileID: 0}
     - target: {fileID: 5235690852444603090, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
+      propertyPath: IsFirstButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235690852444603090, guid: 053f227c2c1c80447a7cf67613674050, type: 3}
       propertyPath: IsFirtsButton
       value: 1
       objectReference: {fileID: 0}
@@ -2157,59 +2161,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5765379512767423559, guid: 7bc14af713232964ea716db0eb3e99a6, type: 3}
   m_PrefabInstance: {fileID: 582430189}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &867565583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2537320541281336567, guid: e55e8f0e70cc62941955943440b49072, type: 3}
-  m_PrefabInstance: {fileID: 1059346894}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &867565587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867565583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0c62fd5f986224e8a40302d4d204b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelToLoad: Level_8
---- !u!58 &867565588
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867565583}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.63
 --- !u!4 &867565591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8008083161386746890, guid: e55e8f0e70cc62941955943440b49072, type: 3}
@@ -2481,6 +2432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquarePortal
       objectReference: {fileID: 0}
+    - target: {fileID: 5286385887522059864, guid: e55e8f0e70cc62941955943440b49072, type: 3}
+      propertyPath: levelToLoad
+      value: Level_8
+      objectReference: {fileID: 0}
     - target: {fileID: 8008083161386746890, guid: e55e8f0e70cc62941955943440b49072, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2532,13 +2487,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2537320541281336567, guid: e55e8f0e70cc62941955943440b49072, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 867565588}
-    - targetCorrespondingSourceObject: {fileID: 2537320541281336567, guid: e55e8f0e70cc62941955943440b49072, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 867565587}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e55e8f0e70cc62941955943440b49072, type: 3}
 --- !u!4 &1076545846 stripped
 Transform:

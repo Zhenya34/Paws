@@ -8,7 +8,10 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float uiHorizontalInput;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private SpriteRenderer _sr;
+    [SerializeField] private AudioSource _as;
+    [SerializeField] private AudioClip jumpSound;
 
+    private bool hasJumpSoundPlayed = false;
     private float _horizontalInput;
     private float jumpTimer = 0;
 
@@ -22,18 +25,28 @@ public class Player_Movement : MonoBehaviour
         if (jumpTimer > 0)
         {
             jumpTimer -= Time.deltaTime;
-            if (Mathf.Abs(_rb.velocity.y) < 0.01f)
+            if (Mathf.Abs(_rb.velocity.y) < 0.01f && !hasJumpSoundPlayed)
             {
+                _as.PlayOneShot(jumpSound);
+                hasJumpSoundPlayed = true;
                 _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                StartCoroutine(ResetJumpSoundPlayed());
+            }
+            else if (hasJumpSoundPlayed)
+            {
+                jumpTimer = 0f;
             }
         }
     }
 
     public void Jump()
     {
-        if (Mathf.Abs(_rb.velocity.y) < 0.01f)
+        if (Mathf.Abs(_rb.velocity.y) < 0.01 && !hasJumpSoundPlayed)
         {
+            _as.PlayOneShot(jumpSound);
+            hasJumpSoundPlayed = true;
             _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            StartCoroutine(ResetJumpSoundPlayed());
         }
         jumpTimer = jumpDelay;
     }
@@ -64,5 +77,15 @@ public class Player_Movement : MonoBehaviour
         {
             _sr.flipX = combinedInput > 0;
         }            
+    }
+    private System.Collections.IEnumerator ResetJumpSoundPlayed()
+    {
+        yield return new WaitForSeconds(jumpDelay);
+        hasJumpSoundPlayed = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        hasJumpSoundPlayed = false;
     }
 }

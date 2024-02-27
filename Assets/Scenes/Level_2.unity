@@ -217,6 +217,14 @@ PrefabInstance:
       propertyPath: playerLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2708187
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.53047085
+      objectReference: {fileID: 0}
     - target: {fileID: 6678399622090802987, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: m_Name
       value: Tile_Platform_3 (4)
@@ -367,6 +375,14 @@ PrefabInstance:
     - target: {fileID: 6678399622090802984, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: playerLayer.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Size.y
+      value: 0.22424316
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5537586
       objectReference: {fileID: 0}
     - target: {fileID: 6678399622090802987, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: m_Name
@@ -1013,59 +1029,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4992002508144521282, guid: 63d36b4a8d8705345af4b4c74c9fd8ce, type: 3}
   m_PrefabInstance: {fileID: 847787998}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &867565583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2537320541281336567, guid: e55e8f0e70cc62941955943440b49072, type: 3}
-  m_PrefabInstance: {fileID: 1059346894}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &867565587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867565583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0c62fd5f986224e8a40302d4d204b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelToLoad: Level_3
---- !u!58 &867565588
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867565583}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.63
 --- !u!4 &867565591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8008083161386746890, guid: e55e8f0e70cc62941955943440b49072, type: 3}
@@ -1092,6 +1055,14 @@ PrefabInstance:
       propertyPath: playerLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25719187
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.53728426
+      objectReference: {fileID: 0}
     - target: {fileID: 6678399622090802987, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: m_Name
       value: Tile_Platform_3 (3)
@@ -1106,7 +1077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6678399622090802990, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.842015
+      value: 6.023
       objectReference: {fileID: 0}
     - target: {fileID: 6678399622090802990, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1343,6 +1314,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquarePortal
       objectReference: {fileID: 0}
+    - target: {fileID: 3847109828700939522, guid: e55e8f0e70cc62941955943440b49072, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286385887522059864, guid: e55e8f0e70cc62941955943440b49072, type: 3}
+      propertyPath: levelToLoad
+      value: Level_3
+      objectReference: {fileID: 0}
     - target: {fileID: 8008083161386746890, guid: e55e8f0e70cc62941955943440b49072, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1394,13 +1373,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2537320541281336567, guid: e55e8f0e70cc62941955943440b49072, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 867565588}
-    - targetCorrespondingSourceObject: {fileID: 2537320541281336567, guid: e55e8f0e70cc62941955943440b49072, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 867565587}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e55e8f0e70cc62941955943440b49072, type: 3}
 --- !u!1001 &1117637834
 PrefabInstance:
@@ -9866,6 +9839,14 @@ PrefabInstance:
     - target: {fileID: 6678399622090802984, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: playerLayer.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25440955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678399622090802985, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5386754
       objectReference: {fileID: 0}
     - target: {fileID: 6678399622090802987, guid: 5ce6ad9b7b622114e959321f10f6f770, type: 3}
       propertyPath: m_Name
