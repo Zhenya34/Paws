@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
-    [SerializeField] private Sprite pressedSprite;
-    [SerializeField] private Sprite unpressedSprite;
-    [SerializeField] private float raiseHeight;
-    [SerializeField] private Vector3 initialPosition;
-    [SerializeField] private GameObject wallDoorParent;
+    [SerializeField] private Sprite _pressedSprite;
+    [SerializeField] private Sprite _unpressedSprite;
+    [SerializeField] private float _raiseHeight;
+    [SerializeField] private Vector3 _initialPosition;
+    [SerializeField] private GameObject _wallDoorParent;
 
-    [SerializeField] private bool IsFirstButton;
-    [SerializeField] private bool IsSecondButton;
+    [SerializeField] private bool _isFirstButton;
+    [SerializeField] private bool _isSecondButton;
 
-    [SerializeField] private bool IsTwoButtonMode = false;
-
+    [SerializeField] private bool _isTwoButtonMode = false;
+    [SerializeField] private AudioSource _as;
+    [SerializeField] private AudioClip _pressingSound;
     private SpriteRenderer _sr;
-    static private int countTriggerOnFirstButton = 0;
-    static private int countTriggerOnSecondButton = 0;
+
+    static private int _countTriggerOnFirstButton = 0;
+    static private int _countTriggerOnSecondButton = 0;
 
     private void Awake()
     {
@@ -26,39 +28,39 @@ public class ButtonController : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Box"))
         {
-            if (IsTwoButtonMode)
+            if (_isTwoButtonMode)
             {
-                if (IsFirstButton)
+                if (_isFirstButton)
                 {
-                    if(countTriggerOnFirstButton == 0)
+                    if(_countTriggerOnFirstButton == 0)
                     {
-                        SetButtonSprite(pressedSprite);
+                        SetButtonSprite(_pressedSprite);
                     }
-                    countTriggerOnFirstButton++;
+                    _countTriggerOnFirstButton++;
                 }
-                else if (IsSecondButton)
+                else if (_isSecondButton)
                 {
-                    if(countTriggerOnSecondButton == 0)
+                    if(_countTriggerOnSecondButton == 0)
                     {
-                        SetButtonSprite(pressedSprite);
+                        SetButtonSprite(_pressedSprite);
                     }
-                    countTriggerOnSecondButton++;
+                    _countTriggerOnSecondButton++;
                 }    
             }
             else
             {
-                if (countTriggerOnFirstButton == 0)
+                if (_countTriggerOnFirstButton == 0)
                 {
-                    wallDoorParent.SetActive(false);
-                    SetButtonSprite(pressedSprite);
+                    _wallDoorParent.SetActive(false);
+                    SetButtonSprite(_pressedSprite);
                 }
-                countTriggerOnFirstButton++;
+                _countTriggerOnFirstButton++;
             }
         }
 
-        if (countTriggerOnFirstButton > 0 && countTriggerOnSecondButton > 0)
+        if (_countTriggerOnFirstButton > 0 && _countTriggerOnSecondButton > 0)
         {
-            wallDoorParent.SetActive(false);
+            _wallDoorParent.SetActive(false);
         }
     }
 
@@ -66,39 +68,39 @@ public class ButtonController : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Box"))
         {
-            if (IsTwoButtonMode)
+            if (_isTwoButtonMode)
             {
-                if (IsFirstButton)
+                if (_isFirstButton)
                 {
-                    if (countTriggerOnFirstButton > 0)
+                    if (_countTriggerOnFirstButton > 0)
                     {
-                        countTriggerOnFirstButton--;
-                        if (countTriggerOnFirstButton == 0)
+                        _countTriggerOnFirstButton--;
+                        if (_countTriggerOnFirstButton == 0)
                         {
-                            SetButtonSprite(unpressedSprite);
+                            SetButtonSprite(_unpressedSprite);
                         }
                     }
                 }
-                else if (IsSecondButton)
+                else if (_isSecondButton)
                 {
-                    if (countTriggerOnSecondButton > 0)
+                    if (_countTriggerOnSecondButton > 0)
                     {
-                        countTriggerOnSecondButton--;
-                        if (countTriggerOnSecondButton == 0)
+                        _countTriggerOnSecondButton--;
+                        if (_countTriggerOnSecondButton == 0)
                         {
-                            SetButtonSprite(unpressedSprite);
+                            SetButtonSprite(_unpressedSprite);
                         }
                     }
                 }
             }
             else
             {
-                if (countTriggerOnFirstButton > 0)
+                if (_countTriggerOnFirstButton > 0)
                 {
-                    countTriggerOnFirstButton--;
-                    if (countTriggerOnFirstButton == 0)
+                    _countTriggerOnFirstButton--;
+                    if (_countTriggerOnFirstButton == 0)
                     {
-                        SetButtonSprite(unpressedSprite);
+                        SetButtonSprite(_unpressedSprite);
                     }
                 }
             }
@@ -109,13 +111,15 @@ public class ButtonController : MonoBehaviour
     {
         _sr.sprite = spriteRenderer;
 
-        if (_sr.sprite == pressedSprite)
+        if (_sr.sprite == _pressedSprite)
         {
-            transform.Translate(raiseHeight * Vector3.down);
+            transform.Translate(_raiseHeight * Vector3.down);
+            _as.PlayOneShot(_pressingSound);
         }
-        else
+        else if(_sr.sprite == _unpressedSprite)
         {
-            transform.position = initialPosition;
+            transform.position = _initialPosition;
+            _as.PlayOneShot(_pressingSound);
         }
     }
 }

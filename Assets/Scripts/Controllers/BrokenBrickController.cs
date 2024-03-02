@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class BrokenBrickController : MonoBehaviour
 {
-    [SerializeField] private float destryDelay = 3;
-    [SerializeField] private Sprite destroyBrickSprite;
+    [SerializeField] private float _destryDelay = 3;
+    [SerializeField] private Sprite _destroyBrickSprite;
     private SpriteRenderer _sr;
 
     private void Awake()
@@ -14,13 +14,13 @@ public class BrokenBrickController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _sr.sprite = destroyBrickSprite;
+        _sr.sprite = _destroyBrickSprite;
         StartCoroutine(DelayBeforeDestroy());
     }
 
     private IEnumerator DelayBeforeDestroy()
     {
-        yield return new WaitForSeconds(destryDelay);
+        yield return new WaitForSeconds(_destryDelay);
         Destroy(gameObject);
     }
 }

@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class IciclesController : MonoBehaviour
 {
-    [SerializeField] private float waitingTime = 1f;
-    [SerializeField] private float downtime = 0.5f;
-    [SerializeField] private float raycastDistance;
+    [SerializeField] private float _waitingTime = 1f;
+    [SerializeField] private float _downtime = 0.5f;
+    [SerializeField] private float _raycastDistance;
+
     private Rigidbody2D _rb;
     private bool _isFalling = false;
     private bool _hasStartedFallingCoroutine = false;
@@ -18,7 +19,7 @@ public class IciclesController : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _raycastDistance);
 
         if (hit.collider != null && hit.collider.CompareTag("Player") && !_hasStartedFallingCoroutine)
         {
@@ -36,13 +37,13 @@ public class IciclesController : MonoBehaviour
 
     IEnumerator StartFallingCoroutine()
     {
-        yield return new WaitForSeconds(waitingTime);
+        yield return new WaitForSeconds(_waitingTime);
         _isFalling = true;
     }
 
     IEnumerator WaitAndDestroyCoroutine()
     {
-        yield return new WaitForSeconds(downtime);
+        yield return new WaitForSeconds(_downtime);
         Destroy(gameObject);
     }
 }

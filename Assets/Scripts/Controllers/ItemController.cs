@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    [SerializeField] private GameObject doorsParent;
-    [SerializeField] private bool isTwoKeyMode = false;
-    [SerializeField] private bool IsFirstKey;
-    [SerializeField] private bool IsSecondKey;
+    [SerializeField] private GameObject _doorsParent;
+    [SerializeField] private bool _isTwoKeyMode = false;
+    [SerializeField] private bool _IsFirstKey;
+    [SerializeField] private bool _IsSecondKey;
     [SerializeField] private AudioSource _as;
-    [SerializeField] private AudioClip cakeCollectClip;
-    [SerializeField] private AudioClip keyCollectClip;
+    [SerializeField] private AudioClip _cakeCollectClip;
+    [SerializeField] private AudioClip _keyCollectClip;
 
     static private bool _isFirstKeyCollected;
     static private bool _isSecondKeyCollected;
@@ -28,18 +28,18 @@ public class ItemController : MonoBehaviour
             if (collidedTag == "Cake")
             {
                 MainMenuCanvasLogic.countOfCake += 1;
-                PlaySound(cakeCollectClip);
+                PlaySound(_cakeCollectClip);
             }                          
             else if (collidedTag == "Key")
             {
-                PlaySound(keyCollectClip);
-                if (isTwoKeyMode)
+                PlaySound(_keyCollectClip);
+                if (_isTwoKeyMode)
                 {
-                    if (IsFirstKey)
+                    if (_IsFirstKey)
                     {
                         _isFirstKeyCollected = true;
                     }
-                    else if (IsSecondKey)
+                    else if (_IsSecondKey)
                     {
                         _isSecondKeyCollected = true;
                     }
@@ -63,16 +63,16 @@ public class ItemController : MonoBehaviour
         GameObject soundObject = new("TempSoundObject");
         AudioSource audioSource = soundObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = 0.35f;
+        audioSource.volume = 0.25f;
         audioSource.Play();
         Destroy(soundObject, clip.length);
     }
 
     private void OpenDoors()
     {
-        if (doorsParent != null)
+        if (_doorsParent != null)
         {
-            doorsParent.SetActive(false);
+            _doorsParent.SetActive(false);
         }
     }
 }

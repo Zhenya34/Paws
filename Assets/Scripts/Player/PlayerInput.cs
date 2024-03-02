@@ -2,30 +2,30 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private Player_Movement playerMovement;
-    [SerializeField] private PlayerAnimController playerAnimController;
+    [SerializeField] private Player_Movement _playerMovement;
+    [SerializeField] private PlayerAnimController _playerAnimController;
 
     public void OnJumpButtonClicked()
     {
-        playerMovement.Jump();
-        playerAnimController.JumpAnimation();
+        _playerMovement.Jump();
+        _playerAnimController.JumpAnimation();
     }
 
     public void OnLeftButtonClicked()
     {
-        playerAnimController.isRunning = true;
-        playerMovement.MoveLeft();        
+        _playerAnimController.isRunning = true;
+        _playerMovement.MoveLeft();        
     }
 
     public void OnRightButtonClicked()
     {
-        playerAnimController.isRunning = true;
-        playerMovement.MoveRight();        
+        _playerAnimController.isRunning = true;
+        _playerMovement.MoveRight();        
     }
 
     public void OnButtonUp()
     {
-        playerAnimController.isRunning = false;
-        playerMovement.StopMoving();
+        _playerAnimController.isRunning = false;
+        _playerMovement.StopMoving();
     }
 }

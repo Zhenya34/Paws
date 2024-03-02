@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4697034747569962784}
   - component: {fileID: 4697034747569962785}
   - component: {fileID: 4697034747569962786}
+  - component: {fileID: 2160718340826372985}
   m_Layer: 0
   m_Name: Tile_Box
   m_TagString: Box
@@ -66,7 +67,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00067567825, y: -0.00058555603}
+  m_Offset: {x: -0.00067567825, y: 0.014530957}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +78,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4952364, y: 1.4977589}
+  m_Size: {x: 1.4952364, y: 1.4675258}
   m_EdgeRadius: 0
 --- !u!50 &4697034747569962786
 Rigidbody2D:
@@ -94,7 +95,7 @@ Rigidbody2D:
   m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -106,6 +107,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2160718340826372985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697034747569962787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154949a3c14eeea469c2439aea08e36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4697034748745886527
 GameObject:
   m_ObjectHideFlags: 0

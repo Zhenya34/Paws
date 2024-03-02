@@ -293,6 +293,7 @@ MonoBehaviour:
   musicButtonOFF: {fileID: 7983479304403853330}
   soundButtonON: {fileID: 2405542256317258568}
   soundButtonOFF: {fileID: 2454828296462021770}
+  switchingSoundClip: {fileID: 8300000, guid: c6a35c39b8efa54489638500b31874e8, type: 3}
 --- !u!1 &2454828296462021770
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +451,7 @@ MonoBehaviour:
   musicButtonOFF: {fileID: 7983479304403853330}
   soundButtonON: {fileID: 2405542256317258568}
   soundButtonOFF: {fileID: 2454828296462021770}
+  switchingSoundClip: {fileID: 8300000, guid: c6a35c39b8efa54489638500b31874e8, type: 3}
 --- !u!1 &2460115499982274681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1031,7 @@ MonoBehaviour:
   pauseUI: {fileID: 4921901616904910646}
   pauseButton: {fileID: 4736233275674223212}
   soundButton: {fileID: 2460115499982274681}
+  levelCanvasSound: {fileID: 0}
 --- !u!1 &4712022344705257602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1256,7 @@ MonoBehaviour:
   pauseUI: {fileID: 4921901616904910646}
   pauseButton: {fileID: 4736233275674223212}
   soundButton: {fileID: 2460115499982274681}
+  levelCanvasSound: {fileID: 0}
 --- !u!1 &4921901616904910646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1521,7 @@ MonoBehaviour:
   pauseUI: {fileID: 4921901616904910646}
   pauseButton: {fileID: 4736233275674223212}
   soundButton: {fileID: 2460115499982274681}
+  levelCanvasSound: {fileID: 0}
 --- !u!1 &6177106157288164372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1679,7 @@ MonoBehaviour:
   musicButtonOFF: {fileID: 7983479304403853330}
   soundButtonON: {fileID: 2405542256317258568}
   soundButtonOFF: {fileID: 2454828296462021770}
+  switchingSoundClip: {fileID: 8300000, guid: c6a35c39b8efa54489638500b31874e8, type: 3}
 --- !u!1 &6182405165846425009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,6 +1828,7 @@ MonoBehaviour:
   pauseUI: {fileID: 4921901616904910646}
   pauseButton: {fileID: 4736233275674223212}
   soundButton: {fileID: 2460115499982274681}
+  levelCanvasSound: {fileID: 0}
 --- !u!1 &7591742018155834652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,6 +2106,7 @@ MonoBehaviour:
   musicButtonOFF: {fileID: 7983479304403853330}
   soundButtonON: {fileID: 2405542256317258568}
   soundButtonOFF: {fileID: 2454828296462021770}
+  switchingSoundClip: {fileID: 8300000, guid: c6a35c39b8efa54489638500b31874e8, type: 3}
 --- !u!1 &8289129215603591197
 GameObject:
   m_ObjectHideFlags: 0

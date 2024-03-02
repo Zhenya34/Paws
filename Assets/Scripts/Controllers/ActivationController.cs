@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class ActivationController : MonoBehaviour
 {
-    [SerializeField] private GameObject checkingObj;
-    private MoveController moveController;
+    [SerializeField] private GameObject _checkingObj;
+    private MoveController _moveController;
 
     private void Awake()
     {
-        moveController = GetComponent<MoveController>();
+        _moveController = GetComponent<MoveController>();
     }
 
     private void Update()
     {
-        if (!checkingObj.activeSelf)
+        if (!_checkingObj.activeSelf)
         {
-            moveController.enabled = true;
+            _moveController.enabled = true;
         }
     }
 }

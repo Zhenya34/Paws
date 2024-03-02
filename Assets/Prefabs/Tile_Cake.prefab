@@ -194,7 +194,7 @@ MonoBehaviour:
   IsSecondKey: 0
   _as: {fileID: 148830588936808981}
   cakeCollectClip: {fileID: 8300000, guid: 0969d844a38e47e408e079f0b8c1381f, type: 3}
-  keyCollectClip: {fileID: 8300000, guid: 9d99e61714b3eab4a86f81b7386fa1b1, type: 3}
+  keyCollectClip: {fileID: 8300000, guid: 23f78c509b06c5f4ab9d1df78765e0a1, type: 3}
 --- !u!82 &148830588936808981
 AudioSource:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.35
+  m_Volume: 0.077
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayerDeathController : MonoBehaviour
 {
-    private int _countOfDeath = 0;
-    [SerializeField] private LevelCanvasLogic levelCanvasLogic;
+    [SerializeField] private LevelSoundManager _levelSoundManager;
+    private bool _isAlreadyDead = false;
+    static private int _countOfDeath = 0;
 
-    void Update()
+    private void Update()
     {
         if (transform.position.y <= -8f)
         {
@@ -15,8 +16,11 @@ public class PlayerDeathController : MonoBehaviour
 
     public void HandlePlayerDeath()
     {
-        _countOfDeath++;
-        Destroy(gameObject);
-        levelCanvasLogic.ReloadScene();
+        if (!_isAlreadyDead)
+        {
+            _isAlreadyDead = true;
+            _countOfDeath++;
+            _levelSoundManager.PlaySoundOfDead();
+        }
     }
 }

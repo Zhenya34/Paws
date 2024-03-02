@@ -3,36 +3,38 @@ using UnityEngine.SceneManagement;
 
 public class LevelCanvasLogic : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseUI;
-    [SerializeField] private GameObject pauseButton;
-    [SerializeField] private GameObject soundButton;
-    [SerializeField] private AudioSource _as;
-    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private GameObject _pauseUI;
+    [SerializeField] private GameObject _pauseButton;
+    [SerializeField] private GameObject _soundButton;
+    [SerializeField] private LevelSoundManager _levelCanvasSound;
 
     public void HidePausePanel()
     {
-        pauseUI.SetActive(false);
-        pauseButton.SetActive(true);
-        soundButton.SetActive(false);
+        _pauseUI.SetActive(false);
+        _pauseButton.SetActive(true);
+        _soundButton.SetActive(false);
         Time.timeScale = 1f;
+        _levelCanvasSound.PlayPressingButtonSound();
     }
 
     public void ShowPausePanel()
     {
-        pauseUI.SetActive(true);
-        pauseButton.SetActive(false);
-        soundButton.SetActive(true);
+        _pauseUI.SetActive(true);
+        _pauseButton.SetActive(false);
+        _soundButton.SetActive(true);
         Time.timeScale = 0f;
+        _levelCanvasSound.PlayPauseButtonSound();
     }
 
     public void LoadSceneByName(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
     }
 
     public void ReloadScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
-}
+} 

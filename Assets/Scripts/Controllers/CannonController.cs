@@ -3,14 +3,16 @@ using System.Collections;
 
 public class CannonController : MonoBehaviour
 {
-    [SerializeField] private float shotDelay = 3f;
-    [SerializeField] private float recoilDelay = 0.6f;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform bullerSpawnPoint;
-    [SerializeField] private Sprite activatedCannon;
-    [SerializeField] private Sprite deactivatedCannon;
-    [SerializeField] private float startShotDelay = 1.5f;
-    [SerializeField] private bool startWithDelay;
+    [SerializeField] private float _shotDelay = 3f;
+    [SerializeField] private float _recoilDelay = 0.6f;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _bulletSpawnPoint;
+    [SerializeField] private Sprite _activatedCannon;
+    [SerializeField] private Sprite _deactivatedCannon;
+    [SerializeField] private float _startShotDelay = 1.5f;
+    [SerializeField] private bool _startWithDelay;
+    [SerializeField] private AudioSource _as;
+    [SerializeField] private AudioClip _shotClip;
 
     private SpriteRenderer _sr;
     private bool _isReloading = false;
@@ -18,9 +20,9 @@ public class CannonController : MonoBehaviour
     private void Awake()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
-        SetCannonSprite(deactivatedCannon);
+        SetCannonSprite(_deactivatedCannon);
 
-        if (startWithDelay)
+        if (_startWithDelay)
         {
             _isReloading = true;
             StartCoroutine(StartShotDelay());
@@ -39,8 +41,9 @@ public class CannonController : MonoBehaviour
     private void Shot()
     {
         _isReloading = true;
-        Instantiate(bulletPrefab, bullerSpawnPoint.position, bullerSpawnPoint.rotation);
-        SetCannonSprite(activatedCannon);
+        Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
+        _as.PlayOneShot(_shotClip);
+        SetCannonSprite(_activatedCannon);
         StartCoroutine(Recoil());
     }
 
@@ -51,19 +54,19 @@ public class CannonController : MonoBehaviour
 
     private IEnumerator Recoil()
     {
-        yield return new WaitForSeconds(recoilDelay);
-        SetCannonSprite(deactivatedCannon);
+        yield return new WaitForSeconds(_recoilDelay);
+        SetCannonSprite(_deactivatedCannon);
     }
 
     private IEnumerator ShotDelay()
     {        
-        yield return new WaitForSeconds(shotDelay);
+        yield return new WaitForSeconds(_shotDelay);
         _isReloading = false;
     }
 
     private IEnumerator StartShotDelay()
     {
-        yield return new WaitForSeconds(startShotDelay);
+        yield return new WaitForSeconds(_startShotDelay);
         _isReloading = false;
     }
 }

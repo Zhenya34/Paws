@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerAnimController : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
-    [SerializeField] private float IdleTimer = 10;
-    [SerializeField] private float raycastDistance = 1.0f;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private float _idleTimer = 10;
+    [SerializeField] private float _raycastDistance = 1.0f;
     public bool isRunning = false;
 
     private enum AnimationState
@@ -17,17 +17,17 @@ public class PlayerAnimController : MonoBehaviour
 
     private void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(AnimationState.IdleWait.ToString()))
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(AnimationState.IdleWait.ToString()))
         {
-            IdleTimer -= Time.deltaTime;
+            _idleTimer -= Time.deltaTime;
 
-            if (IdleTimer <= 0)
+            if (_idleTimer <= 0)
             {
-                animator.SetBool(AnimationState.Idle.ToString(), true);
+                _animator.SetBool(AnimationState.Idle.ToString(), true);
             }
             else
             {
-                animator.SetBool(AnimationState.Idle.ToString(), false);
+                _animator.SetBool(AnimationState.Idle.ToString(), false);
             }                
         }
 
@@ -41,7 +41,6 @@ public class PlayerAnimController : MonoBehaviour
         {
             IsRunningFalse();
         }    
-                          
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -53,25 +52,25 @@ public class PlayerAnimController : MonoBehaviour
     {
         if (IsGrounded())
         {
-            animator.SetTrigger(AnimationState.Jump.ToString());
-            IdleTimer = 10;
+            _animator.SetTrigger(AnimationState.Jump.ToString());
+            _idleTimer = 10;
         }
     }
 
     public void IsRunningTrue()
     {
-        IdleTimer = 10;
-        animator.SetBool(AnimationState.IsRunning.ToString(), true);
+        _idleTimer = 10;
+        _animator.SetBool(AnimationState.IsRunning.ToString(), true);
     }
 
     public void IsRunningFalse()
     {
-        animator.SetBool(AnimationState.IsRunning.ToString(), false);
+        _animator.SetBool(AnimationState.IsRunning.ToString(), false);
     }
 
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _raycastDistance);
         return hit.collider != null;
     }
 }

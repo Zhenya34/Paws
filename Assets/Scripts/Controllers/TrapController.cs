@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class TrapController : MonoBehaviour
 {
-    [SerializeField] private PlayerDeathController playerDeathController;
+    [SerializeField] private PlayerDeathController _playerDeathController;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerDeathController.HandlePlayerDeath();
+            _playerDeathController.HandlePlayerDeath();
         }            
     }
 
@@ -16,7 +16,7 @@ public class TrapController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerDeathController.HandlePlayerDeath();
+            _playerDeathController.HandlePlayerDeath();
         }
     }
 }

@@ -121,7 +121,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0c62fd5f986224e8a40302d4d204b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level_2
+  _levelToLoad: 
   _as: {fileID: -5199896965778373948}
-  portalClip: {fileID: 8300000, guid: baca1d553ba77264fad123eac9db2d3d, type: 3}
+  _portalClip: {fileID: 0}
+  _levelAvailability: {fileID: 0}

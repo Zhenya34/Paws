@@ -2,22 +2,23 @@ using UnityEngine;
 
 public class WoodPlatformController : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private LayerMask _playerLayer;
+
     private BoxCollider2D _platformCollider;
     private Collider2D _playerCollider;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private LayerMask playerLayer;
 
     private void Awake()
     {
         _platformCollider = GetComponent<BoxCollider2D>();
-        _playerCollider = rb.GetComponent<Collider2D>();
+        _playerCollider = _rb.GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        if (rb != null)
+        if (_rb != null)
         {
-            float verticalVelocity = rb.velocity.y;
+            float verticalVelocity = _rb.velocity.y;
 
             if (verticalVelocity > 0)
             {

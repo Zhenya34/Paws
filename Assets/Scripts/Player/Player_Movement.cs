@@ -1,19 +1,23 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player_Movement : MonoBehaviour
 {
-    [SerializeField] private float speed = 8;
-    [SerializeField] private float jumpForce = 5;
-    [SerializeField] private float jumpDelay = 0.2f;
-    [SerializeField] private float uiHorizontalInput;
+    [SerializeField] private float _speed = 8;
+    [SerializeField] private float _jumpForce = 5;
+    [SerializeField] private float _jumpDelay = 0.2f;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private SpriteRenderer _sr;
-    [SerializeField] private AudioSource _as;
-    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioSource _runningAudioSource;
+    [SerializeField] private AudioSource _jumpingAudioSource;
+    [SerializeField] private AudioClip _jumpSound;
+    [SerializeField] private AudioClip _runningSound;
 
-    private bool hasJumpSoundPlayed = false;
+    private float _uiHorizontalInput;
     private float _horizontalInput;
-    private float jumpTimer = 0;
+    private bool _hasJumpSoundPlayed = false;
+    private bool _isRunning = false;
+    private float _jumpTimer = 0;
 
     private void Update()
     {
@@ -22,70 +26,82 @@ public class Player_Movement : MonoBehaviour
             Jump();
         }
 
-        if (jumpTimer > 0)
+        if (_jumpTimer > 0)
         {
-            jumpTimer -= Time.deltaTime;
-            if (Mathf.Abs(_rb.velocity.y) < 0.01f && !hasJumpSoundPlayed)
+            _jumpTimer -= Time.deltaTime;
+            if (Mathf.Abs(_rb.velocity.y) < 0.01f && !_hasJumpSoundPlayed)
             {
-                _as.PlayOneShot(jumpSound);
-                hasJumpSoundPlayed = true;
-                _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                _jumpingAudioSource.PlayOneShot(_jumpSound);
+                _hasJumpSoundPlayed = true;
+                _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
                 StartCoroutine(ResetJumpSoundPlayed());
             }
-            else if (hasJumpSoundPlayed)
+            else if (_hasJumpSoundPlayed)
             {
-                jumpTimer = 0f;
+                _jumpTimer = 0f;
             }
         }
     }
 
     public void Jump()
     {
-        if (Mathf.Abs(_rb.velocity.y) < 0.01 && !hasJumpSoundPlayed)
+        if (Mathf.Abs(_rb.velocity.y) < 0.01 && !_hasJumpSoundPlayed)
         {
-            _as.PlayOneShot(jumpSound);
-            hasJumpSoundPlayed = true;
-            _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            _jumpingAudioSource.PlayOneShot(_jumpSound);
+            _hasJumpSoundPlayed = true;
+            _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
             StartCoroutine(ResetJumpSoundPlayed());
         }
-        jumpTimer = jumpDelay;
+        _jumpTimer = _jumpDelay;
     }
 
     public void MoveRight()
     {
-        uiHorizontalInput = 1;
+        _uiHorizontalInput = 1;
     }
 
     public void MoveLeft()
     {
-        uiHorizontalInput = -1;
+        _uiHorizontalInput = -1;
     }
 
     public void StopMoving()
     {
-        uiHorizontalInput = 0;
+        _uiHorizontalInput = 0;
     }
 
     private void FixedUpdate()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
-        float combinedInput = Mathf.Abs(_horizontalInput) > Mathf.Abs(uiHorizontalInput) ? _horizontalInput : uiHorizontalInput;
+        float combinedInput = Mathf.Abs(_horizontalInput) > Mathf.Abs(_uiHorizontalInput) ? _horizontalInput : _uiHorizontalInput;
 
-        transform.position += speed * Time.deltaTime * new Vector3(combinedInput, 0, 0);
+        transform.position += _speed * Time.deltaTime * new Vector3(combinedInput, 0, 0);
 
-        if (combinedInput != 0)
+        if (combinedInput != 0 && !(_rb.velocity.y > 0.01f))
         {
             _sr.flipX = combinedInput > 0;
-        }            
+            if (!_isRunning)
+            {
+                _isRunning = true;
+                _runningAudioSource.PlayOneShot(_runningSound);
+                _runningAudioSource.Play();
+            }
+        }   
+        else if(combinedInput == 0 || _rb.velocity.y > 0.01f)
+        {
+            _isRunning = false;
+            _runningAudioSource.Stop();
+        }
     }
-    private System.Collections.IEnumerator ResetJumpSoundPlayed()
+
+    private IEnumerator ResetJumpSoundPlayed()
     {
-        yield return new WaitForSeconds(jumpDelay);
-        hasJumpSoundPlayed = false;
+        yield return new WaitForSeconds(_jumpDelay);
+        _hasJumpSoundPlayed = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        hasJumpSoundPlayed = false;
+        _hasJumpSoundPlayed = false;
     }
 }

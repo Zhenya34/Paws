@@ -2,33 +2,32 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    [SerializeField] private Vector3 startPoint;
-    [SerializeField] private Vector3 endPoint;
-    [SerializeField] private float speed = 2.0f;
+    [SerializeField] private Vector3 _startPoint;
+    [SerializeField] private Vector3 _endPoint;
+    [SerializeField] private float _speed = 2.0f;
 
     private Vector3 _target;
 
-    void Start()
+    private void Start()
     {
-        _target = endPoint;
+        _target = _endPoint;
     }
 
-    void Update()
+    private void Update()
     {
-        float step = speed * Time.deltaTime;
+        float step = _speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, _target, step);
 
         if (Vector3.Distance(transform.position, _target) < 0.001f)
         {
-            if (_target == startPoint)
+            if (_target == _startPoint)
             {
-                _target = endPoint;
+                _target = _endPoint;
             }
             else
             {
-                _target = startPoint;
-            }         
-                            
+                _target = _startPoint;
+            }                        
         }
     }
 }
