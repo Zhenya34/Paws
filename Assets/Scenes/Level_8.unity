@@ -23218,11 +23218,11 @@ PrefabInstance:
     - target: {fileID: 4815428623694598719, guid: f0bfc5e089974f54f8cf9ef178fcefcd, type: 3}
       propertyPath: _musicTracks.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 6b5a3428109bc8544ae127ca0589ca61, type: 3}
+      objectReference: {fileID: 8300000, guid: 84ddb6a7f10ddc14d94729312fac700a, type: 3}
     - target: {fileID: 4815428623694598719, guid: f0bfc5e089974f54f8cf9ef178fcefcd, type: 3}
       propertyPath: _musicTracks.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 84ddb6a7f10ddc14d94729312fac700a, type: 3}
+      objectReference: {fileID: 8300000, guid: 6b5a3428109bc8544ae127ca0589ca61, type: 3}
     - target: {fileID: 8823171920013037390, guid: f0bfc5e089974f54f8cf9ef178fcefcd, type: 3}
       propertyPath: m_Volume
       value: 0.15

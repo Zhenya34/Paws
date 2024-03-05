@@ -10,6 +10,7 @@ TagManager:
   - Cake
   - Box
   - NoReboot
+  - NoDelete
   layers:
   - Default
   - TransparentFX
