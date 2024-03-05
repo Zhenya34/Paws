@@ -34,7 +34,10 @@ public class TrampolineController : MonoBehaviour
     private void ApplyForce()
     {
         _playerRb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
-        _as.PlayOneShot(_jumpSound);
+        if (_as.enabled != false)
+        {
+            _as.PlayOneShot(_jumpSound);
+        }
     }
 
     private void SetTrampolineSprite(Sprite spriteRenderer)

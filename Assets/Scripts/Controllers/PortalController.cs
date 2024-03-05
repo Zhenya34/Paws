@@ -8,26 +8,28 @@ public class PortalController : MonoBehaviour
     [SerializeField] private AudioSource _as;
     [SerializeField] private AudioClip _portalClip;
     [SerializeField] private LevelAvailability _levelAvailability;
+    [SerializeField] private ItemController itemController;
     private bool _isPortalSoundCoroutineLaunched = false;
-    private bool _isNewLevelUnlocked = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !_isPortalSoundCoroutineLaunched)
         {
-/*            if (!_isNewLevelUnlocked)
-            {
-                _isNewLevelUnlocked = true;
-                _levelAvailability.UnlockNextLevel();
-            }*/
             _isPortalSoundCoroutineLaunched = true;
+            if(itemController != null)
+            {
+                itemController.PortalVisited();
+            }
             StartCoroutine(PlaySoundAndLoadLevel());
         }
     }
 
     private IEnumerator PlaySoundAndLoadLevel()
     {
-        _as.PlayOneShot(_portalClip);
+        if (_as.enabled != false)
+        {
+            _as.PlayOneShot(_portalClip);
+        }
         yield return new WaitForSeconds(_portalClip.length);
         SceneManager.LoadScene(_levelToLoad);
     }

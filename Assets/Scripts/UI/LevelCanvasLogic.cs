@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +9,13 @@ public class LevelCanvasLogic : MonoBehaviour
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] private GameObject _soundButton;
     [SerializeField] private LevelSoundManager _levelCanvasSound;
+    [SerializeField] private TMP_Text _deathsText;
+    [SerializeField] private AudioSource finalSceneAudioSource;
+
+    private void Start()
+    {
+        UpdateDeathsText();
+    }
 
     public void HidePausePanel()
     {
@@ -15,6 +24,13 @@ public class LevelCanvasLogic : MonoBehaviour
         _soundButton.SetActive(false);
         Time.timeScale = 1f;
         _levelCanvasSound.PlayPressingButtonSound();
+        UpdateDeathsText();
+        if (finalSceneAudioSource != null)
+        {
+            finalSceneAudioSource.UnPause();
+            finalSceneAudioSource.Play();
+        }
+        
     }
 
     public void ShowPausePanel()
@@ -24,6 +40,11 @@ public class LevelCanvasLogic : MonoBehaviour
         _soundButton.SetActive(true);
         Time.timeScale = 0f;
         _levelCanvasSound.PlayPauseButtonSound();
+        UpdateDeathsText();
+        if (finalSceneAudioSource != null)
+        {
+            finalSceneAudioSource.Pause();
+        }
     }
 
     public void LoadSceneByName(string sceneName)
@@ -34,7 +55,16 @@ public class LevelCanvasLogic : MonoBehaviour
 
     public void ReloadScene()
     {
+        UpdateDeathsText();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
+    }
+
+    private void UpdateDeathsText()
+    {
+        if (_deathsText != null)
+        {
+            _deathsText.text = GameManager.CountOfDeaths.ToString();
+        }
     }
 } 

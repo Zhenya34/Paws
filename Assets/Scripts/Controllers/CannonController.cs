@@ -42,7 +42,10 @@ public class CannonController : MonoBehaviour
     {
         _isReloading = true;
         Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
-        _as.PlayOneShot(_shotClip);
+        if (_as.enabled != false)
+        {
+            _as.PlayOneShot(_shotClip);
+        }
         SetCannonSprite(_activatedCannon);
         StartCoroutine(Recoil());
     }

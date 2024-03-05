@@ -31,9 +31,14 @@ public class Player_Movement : MonoBehaviour
             _jumpTimer -= Time.deltaTime;
             if (Mathf.Abs(_rb.velocity.y) < 0.01f && !_hasJumpSoundPlayed)
             {
-                _jumpingAudioSource.PlayOneShot(_jumpSound);
+                if (_jumpingAudioSource.enabled != false)
+                {
+                    _jumpingAudioSource.PlayOneShot(_jumpSound);
+                }
                 _hasJumpSoundPlayed = true;
                 _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+                GameManager._countOfJumps++;
+                GameManager.SaveGameData();
                 StartCoroutine(ResetJumpSoundPlayed());
             }
             else if (_hasJumpSoundPlayed)
@@ -47,9 +52,14 @@ public class Player_Movement : MonoBehaviour
     {
         if (Mathf.Abs(_rb.velocity.y) < 0.01 && !_hasJumpSoundPlayed)
         {
-            _jumpingAudioSource.PlayOneShot(_jumpSound);
+            if (_jumpingAudioSource.enabled != false)
+            {
+                _jumpingAudioSource.PlayOneShot(_jumpSound);
+            }
             _hasJumpSoundPlayed = true;
             _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+            GameManager._countOfJumps++;
+            GameManager.SaveGameData();
             StartCoroutine(ResetJumpSoundPlayed());
         }
         _jumpTimer = _jumpDelay;
@@ -83,14 +93,20 @@ public class Player_Movement : MonoBehaviour
             if (!_isRunning)
             {
                 _isRunning = true;
-                _runningAudioSource.PlayOneShot(_runningSound);
-                _runningAudioSource.Play();
+                if(_runningAudioSource.enabled != false)
+                {
+                    _runningAudioSource.PlayOneShot(_runningSound);
+                    _runningAudioSource.Play();
+                }
             }
         }   
         else if(combinedInput == 0 || _rb.velocity.y > 0.01f)
         {
             _isRunning = false;
-            _runningAudioSource.Stop();
+            if (_runningAudioSource.enabled != false)
+            {
+                _runningAudioSource.Stop();
+            }  
         }
     }
 

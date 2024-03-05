@@ -4,7 +4,6 @@ public class PlayerDeathController : MonoBehaviour
 {
     [SerializeField] private LevelSoundManager _levelSoundManager;
     private bool _isAlreadyDead = false;
-    static private int _countOfDeath = 0;
 
     private void Update()
     {
@@ -19,7 +18,8 @@ public class PlayerDeathController : MonoBehaviour
         if (!_isAlreadyDead)
         {
             _isAlreadyDead = true;
-            _countOfDeath++;
+            GameManager._countOfDeaths++;
+            GameManager.SaveGameData();
             _levelSoundManager.PlaySoundOfDead();
         }
     }

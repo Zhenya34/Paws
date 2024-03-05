@@ -142,8 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _as: {fileID: 1412315065441143283}
+  _musicButtonClip: {fileID: 8300000, guid: c6a35c39b8efa54489638500b31874e8, type: 3}
   _pauseClip: {fileID: 8300000, guid: 2fc77f2d076ba8445a8c274c54ba2aba, type: 3}
   _soundOfDeath: {fileID: 8300000, guid: 933f5cf4577f24d4cb1d2338afbdcc68, type: 3}
   _player: {fileID: 0}
   _levelCanvasLogic: {fileID: 0}
-  pressingSoundClip: {fileID: 8300000, guid: ee28b2cebf7ff9a42aa5d481d094844e, type: 3}
+  _selectedLevelClip: {fileID: 8300000, guid: 98f8fd2f67ed7ef439e368cdb28592e2, type: 3}
+  _pressingSoundClip: {fileID: 8300000, guid: ee28b2cebf7ff9a42aa5d481d094844e, type: 3}

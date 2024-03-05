@@ -16,21 +16,33 @@ public class EventManager : MonoBehaviour
 
     public void PlayJumpClip()
     {
-        _as.PlayOneShot(_jumpSound);
+        if(_as.enabled != false)
+        {
+            _as.PlayOneShot(_jumpSound);
+        }
     }
 
     public void PlayBubbleClip()
     {
-        _as.PlayOneShot(_bubbleSound);
+        if (_as.enabled != false)
+        {
+            _as.PlayOneShot(_bubbleSound);
+        }
     }
 
     public void PlayRunningClip()
     {
-        _as.PlayOneShot(_runningSound);
+        if (_as.enabled != false)
+        {
+            _as.PlayOneShot(_runningSound);
+        }
     }
 
     public void StopAudioSource()
     {
-        _as.Stop();
+        if (_as.enabled != false)
+        {
+            _as.Stop();
+        }
     }
 }

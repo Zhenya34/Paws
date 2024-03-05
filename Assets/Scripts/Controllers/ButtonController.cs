@@ -114,12 +114,18 @@ public class ButtonController : MonoBehaviour
         if (_sr.sprite == _pressedSprite)
         {
             transform.Translate(_raiseHeight * Vector3.down);
-            _as.PlayOneShot(_pressingSound);
+            if (_as.enabled != false)
+            {
+                _as.PlayOneShot(_pressingSound);
+            }
         }
         else if(_sr.sprite == _unpressedSprite)
         {
             transform.position = _initialPosition;
-            _as.PlayOneShot(_pressingSound);
+            if (_as.enabled != false)
+            {
+                _as.PlayOneShot(_pressingSound);
+            }
         }
     }
 }

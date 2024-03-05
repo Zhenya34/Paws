@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf0d5a0b073be741a30249e8961656a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelButtons:
+  _unlockedLevelIndex: 0
+  _levelButtons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -57,4 +58,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  unlockedLevelIndex: 0
