@@ -7,8 +7,11 @@ public class PlayerInput : MonoBehaviour
 
     public void OnJumpButtonClicked()
     {
-        _playerMovement.Jump();
-        _playerAnimController.JumpAnimation();
+        if (_playerMovement != null)
+        {
+            _playerMovement.Jump();
+            _playerAnimController.JumpAnimation();
+        }
     }
 
     public void OnLeftButtonClicked()
