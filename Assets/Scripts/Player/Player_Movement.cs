@@ -150,12 +150,18 @@ public class Player_Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _hasJumpSoundPlayed = false;
-        _alreadyJumped = false;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            _hasJumpSoundPlayed = false;
+            _alreadyJumped = false;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _airJumpWindowTimer = _airJumpWindowDuration;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            _airJumpWindowTimer = _airJumpWindowDuration;
+        }
     }
 }
