@@ -6,6 +6,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float _speed = 8;
     [SerializeField] private float _jumpForce = 5;
     [SerializeField] private float _jumpDelay = 0.2f;
+    [SerializeField] private float _airJumpWindowDuration = 0.05f;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private SpriteRenderer _sr;
     [SerializeField] private AudioSource _runningAudioSource;
@@ -16,8 +17,10 @@ public class Player_Movement : MonoBehaviour
     private float _uiHorizontalInput;
     private float _horizontalInput;
     private bool _hasJumpSoundPlayed = false;
+    private bool _alreadyJumped = false;
     private bool _isRunning = false;
     private float _jumpTimer = 0;
+    private float _airJumpWindowTimer = 0;
 
     private void Update()
     {
@@ -37,6 +40,7 @@ public class Player_Movement : MonoBehaviour
                 }
                 _hasJumpSoundPlayed = true;
                 _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+                _alreadyJumped = true;
                 GameManager._countOfJumps++;
                 GameManager.SaveGameData();
                 StartCoroutine(ResetJumpSoundPlayed());
@@ -58,11 +62,38 @@ public class Player_Movement : MonoBehaviour
             }
             _hasJumpSoundPlayed = true;
             _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+            _alreadyJumped = true;
             GameManager._countOfJumps++;
             GameManager.SaveGameData();
             StartCoroutine(ResetJumpSoundPlayed());
         }
         _jumpTimer = _jumpDelay;
+        AirJumpAfterFall();
+    }
+
+    private void AirJumpAfterFall()
+    {
+        if (_airJumpWindowTimer > 0)
+        {
+            _airJumpWindowTimer -= Time.deltaTime;
+            if (!_hasJumpSoundPlayed && !_alreadyJumped)
+            {
+                if (_jumpingAudioSource.enabled != false)
+                {
+                    _jumpingAudioSource.PlayOneShot(_jumpSound);
+                }
+                _hasJumpSoundPlayed = true;
+                _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+                _alreadyJumped = true;
+                GameManager._countOfJumps++;
+                GameManager.SaveGameData();
+                StartCoroutine(ResetJumpSoundPlayed());
+            }
+            else if (_hasJumpSoundPlayed)
+            {
+                _airJumpWindowTimer = 0f;
+            }
+        }
     }
 
     public void MoveRight()
@@ -114,10 +145,17 @@ public class Player_Movement : MonoBehaviour
     {
         yield return new WaitForSeconds(_jumpDelay);
         _hasJumpSoundPlayed = false;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _hasJumpSoundPlayed = false;
+        _alreadyJumped = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _airJumpWindowTimer = _airJumpWindowDuration;
     }
 }

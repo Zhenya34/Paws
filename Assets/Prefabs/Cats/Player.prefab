@@ -226,9 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6d54e611666c246bf46d60ce630d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6988474790359522527}
-  IdleTimer: 10
-  raycastDistance: 0.8
+  _animator: {fileID: 0}
+  _idleTimer: 10
+  _raycastDistance: 1
   isRunning: 0
 --- !u!95 &6988474790359522527
 Animator:
@@ -329,16 +329,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f694c9dad5925d499d5d2b8513aeea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6.5
-  jumpForce: 11
-  jumpDelay: 0.2
-  uiHorizontalInput: 0
+  _speed: 8
+  _jumpForce: 5
+  _jumpDelay: 0.2
+  _airJumpWindowDuration: 0.2
   _rb: {fileID: 7183954957928868501}
   _sr: {fileID: 1798943895596064756}
   _runningAudioSource: {fileID: 5324311013419974118}
   _jumpingAudioSource: {fileID: 7630197199128486673}
-  jumpSound: {fileID: 8300000, guid: 01f7beb1a61d1354c90514817f7185f6, type: 3}
-  runningSound: {fileID: 8300000, guid: fe4445e5feab9964b93050c0460bd776, type: 3}
+  _jumpSound: {fileID: 0}
+  _runningSound: {fileID: 0}
 --- !u!114 &6812083455321767305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,9 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2058dda99b6af354e8a79ab742fa4a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelCanvasLogic: {fileID: 0}
-  soundOfDeath: {fileID: 8300000, guid: 933f5cf4577f24d4cb1d2338afbdcc68, type: 3}
-  _as: {fileID: 7630197199128486673}
+  _levelSoundManager: {fileID: 0}
 --- !u!58 &1089327592456571780
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -421,7 +419,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06999999, y: -0.036404133}
+  m_Offset: {x: 0.07507634, y: -0.013791084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -432,7 +430,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93999994, y: 0.19946957}
+  m_Size: {x: 0.37404203, y: 0.15424347}
   m_EdgeRadius: 0
 --- !u!82 &7630197199128486673
 AudioSource:
