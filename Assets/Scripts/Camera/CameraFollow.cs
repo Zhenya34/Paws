@@ -10,6 +10,8 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
+        //It is first branch
+        //It is second branch
         if (_target != null)
         {
             float clampedY = Mathf.Clamp(_target.position.y, _minY, _maxY);
